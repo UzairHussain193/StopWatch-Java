@@ -6,6 +6,7 @@ import java.text.DecimalFormat;
 import java.lang.*;
 
 class Welcome extends JFrame {
+
     public Welcome() {
         ImageIcon ic = new ImageIcon("welcome.jpg");
         JPanel jp = new JPanel();
@@ -27,10 +28,10 @@ class Welcome extends JFrame {
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setContentPane(jp);
-        setLocation(200, 300);
+        // setLocation(200, 300);
         setVisible(true);
-
-        setSize(500, 400);
+        setBounds(300, 200, 500, 400);
+        // setSize(500, 400);
 
         for (int i = 0; i <= 100; i++) {
             pb.setValue(i);
@@ -58,13 +59,13 @@ class Intro extends JFrame implements ActionListener {
         JLabel lb = new JLabel(ic);
         // JPanel jp = new JPanel();
         setTitle("Home Screen");
-        setBounds(300, 90, 500, 400);
+        setBounds(300, 200, 500, 400);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLayout(new FlowLayout(FlowLayout.CENTER));
 
         setResizable(false);
         c = getContentPane();
-        c.setBackground(Color.ORANGE);
+        c.setBackground(Color.BLACK);
         c.setLayout(new BorderLayout());
         c.setLayout(new FlowLayout(FlowLayout.CENTER));
 
@@ -82,8 +83,8 @@ class Intro extends JFrame implements ActionListener {
         stopwatch.setSize(150, 50);
         stopwatch.setLocation(100, 300);
         stopwatch.setFont(new Font("Courier", Font.BOLD, 20));
-        stopwatch.setBackground(Color.BLACK);
-        stopwatch.setForeground(Color.WHITE);
+        stopwatch.setBackground(Color.YELLOW);
+        stopwatch.setForeground(Color.BLACK);
         stopwatch.setVisible(true);
         stopwatch.addActionListener(this);
         c.add(stopwatch);
@@ -92,7 +93,7 @@ class Intro extends JFrame implements ActionListener {
         info.setSize(150, 50);
         info.setFont(new Font("Courier", Font.BOLD, 20));
         info.setLocation(270, 300);
-        info.setBackground(Color.BLACK);
+        info.setBackground(Color.RED);
         info.setForeground(Color.WHITE);
         info.setVisible(true);
         c.add(info);
@@ -112,13 +113,14 @@ class Intro extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
 
         if (e.getSource() == stopwatch) { // when stopwatch button is selected
+            this.dispose();
             NewJFrame nf = new NewJFrame();
             nf.main();
 
         }
         if (e.getSource() == info) {
             try {
-                JOptionPane.showMessageDialog(null, "Details About Project.");
+                info i = new info();
                 this.dispose();
             } catch (Exception a) {
                 a.printStackTrace();
@@ -129,17 +131,64 @@ class Intro extends JFrame implements ActionListener {
     }
 }
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt
- * to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit
- * this template
- */
+class info extends JFrame {
+    Container c;
+    JLabel title, name, roll, subj, teacher;
 
-/**
- *
- * @author AHLP
- */
+    public info() {
+
+        setTitle("Details:");
+        setBackground(Color.BLUE);
+        setBounds(300, 200, 500, 400);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setForeground(Color.BLUE);
+        setLayout(new FlowLayout(FlowLayout.CENTER));
+        setResizable(false);
+
+        c = getContentPane();
+        getContentPane().setBackground(Color.BLUE);
+        c.setLayout(null);
+        title = new JLabel("📌 Project Details. ");
+        title.setFont(new Font("Courier", Font.BOLD, 30));
+        title.setForeground(Color.WHITE);
+        title.setBounds(80, 20, 350, 50);
+        c.add(title);
+
+        name = new JLabel("Developed by : UZAIR HUSSAIN");
+        name.setFont(new Font(Font.SERIF, Font.BOLD, 25));
+        name.setForeground(Color.WHITE);
+        name.setSize(400, 30);
+        name.setLocation(50, 100);
+        c.add(name);
+
+        roll = new JLabel("Roll No: 21SW 085 ");
+        roll.setFont(new Font(Font.SERIF, Font.BOLD, 25));
+        roll.setForeground(Color.WHITE);
+        roll.setSize(400, 30);
+        roll.setLocation(50, 150);
+        c.add(roll);
+
+        subj = new JLabel("Subject: OOP ");
+        subj.setFont(new Font(Font.SERIF, Font.BOLD, 25));
+        subj.setForeground(Color.WHITE);
+        subj.setSize(400, 30);
+        subj.setLocation(50, 200);
+        c.add(subj);
+
+        teacher = new JLabel("Teacher: SIR MOHSIN. ");
+        teacher.setFont(new Font(Font.SERIF, Font.BOLD, 25));
+        teacher.setForeground(Color.WHITE);
+        teacher.setSize(400, 30);
+        teacher.setLocation(50, 250);
+        c.add(teacher);
+
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setVisible(true);
+
+    }
+
+}
+
 class NewJFrame extends javax.swing.JFrame implements Runnable {
 
     Thread t;
@@ -164,6 +213,7 @@ class NewJFrame extends javax.swing.JFrame implements Runnable {
         nstr = "00:00:00";
         mstr = "000";
         dstr = "";
+        cnt2 = 0;
         display();
     }
 
@@ -180,14 +230,14 @@ class NewJFrame extends javax.swing.JFrame implements Runnable {
             nstr = "" + hcnt;
         }
         if (mcnt < 10) {
-            nstr = ":0" + mcnt;
+            nstr += ":0" + mcnt;
         } else {
-            nstr = ":" + mcnt;
+            nstr += ":" + mcnt;
         }
         if (scnt < 10) {
-            nstr = ":0" + scnt;
+            nstr += ":0" + scnt;
         } else {
-            nstr = ":" + scnt;
+            nstr += ":" + scnt;
         }
     }
 
@@ -229,20 +279,20 @@ class NewJFrame extends javax.swing.JFrame implements Runnable {
                 Thread.sleep(1);
             }
         } catch (Exception e) {
-
+            e.printStackTrace();
         }
     }
 
     public void printToList() {
         cnt2++;
-        dstr += "\n" + cnt2 + " " + lbdisplay1.getText() + " " + lbdisplay2.getText() + "\n";
+        dstr += "\n" + cnt2 + " : " + lbdisplay1.getText() + " " + lbdisplay2.getText() + "\n";
         textlist.setText(dstr);
     }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">
     private void initComponents() {
-
+        ImageIcon img = new ImageIcon("stp.png");
         jPanel1 = new javax.swing.JPanel();
         lbdisplay1 = new javax.swing.JLabel();
         lbdisplay2 = new javax.swing.JLabel();
@@ -251,6 +301,8 @@ class NewJFrame extends javax.swing.JFrame implements Runnable {
         jScrollPane1 = new javax.swing.JScrollPane();
         textlist = new javax.swing.JTextArea();
 
+        setLocation(300, 200);
+        setIconImage(img.getImage());
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Stopwatch");
         setResizable(false);
@@ -263,7 +315,7 @@ class NewJFrame extends javax.swing.JFrame implements Runnable {
         lbdisplay2.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
         lbdisplay2.setText("000");
 
-        btnstart.setBackground(new java.awt.Color(255, 51, 51));
+        btnstart.setBackground(Color.YELLOW);
         btnstart.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         btnstart.setText("Start");
         btnstart.addActionListener(new java.awt.event.ActionListener() {
@@ -304,7 +356,8 @@ class NewJFrame extends javax.swing.JFrame implements Runnable {
                                                 .addComponent(btnreset, javax.swing.GroupLayout.PREFERRED_SIZE, 174,
                                                         javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addComponent(lbdisplay1, javax.swing.GroupLayout.PREFERRED_SIZE, 295,
+                                                .addComponent(lbdisplay1, javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                        295,
                                                         javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                 .addComponent(lbdisplay2)))
@@ -313,18 +366,21 @@ class NewJFrame extends javax.swing.JFrame implements Runnable {
                 jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(26, 26, 26)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addGroup(jPanel1Layout
+                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                         .addComponent(lbdisplay1, javax.swing.GroupLayout.PREFERRED_SIZE, 70,
                                                 javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(lbdisplay2))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addGroup(jPanel1Layout
+                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                         .addComponent(btnstart, javax.swing.GroupLayout.PREFERRED_SIZE, 52,
                                                 javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(btnreset, javax.swing.GroupLayout.PREFERRED_SIZE, 52,
                                                 javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 217, Short.MAX_VALUE)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 217,
+                                        Short.MAX_VALUE)
                                 .addContainerGap()));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -346,6 +402,7 @@ class NewJFrame extends javax.swing.JFrame implements Runnable {
 
         if (btnstart.getText().equals("Start")) {
             btnstart.setText("Stop");
+            btnstart.setBackground(Color.RED);
             cnt++;
             if (cnt == 1) {
                 t.start();
@@ -354,6 +411,7 @@ class NewJFrame extends javax.swing.JFrame implements Runnable {
             }
         } else {
             btnstart.setText("Start");
+            btnstart.setBackground(Color.YELLOW);
             t.suspend();
             printToList();
         }
@@ -380,13 +438,17 @@ class NewJFrame extends javax.swing.JFrame implements Runnable {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null,
+                    ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null,
+                    ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null,
+                    ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null,
+                    ex);
         }
         // </editor-fold>
 
@@ -408,153 +470,6 @@ class NewJFrame extends javax.swing.JFrame implements Runnable {
     private javax.swing.JTextArea textlist;
     // End of variables declaration
 }
-
-// class stpwatch extends Thread implements ActionListener {
-// JFrame f;
-// Timer t;
-// JOptionPane dialog;
-// JLabel display;
-// DecimalFormat df;
-// JPanel watchPanel, controlPanel;
-// JButton ssBtn, reBtn, prBtn, about;
-
-// public stpwatch() {
-// try {
-// ButtonPerformed btnPerform = new ButtonPerformed();
-// ssBtn = new JButton("Start");
-// reBtn = new JButton("Reset");
-// prBtn = new JButton("Pause");
-// about = new JButton("About");
-// prBtn.setEnabled(false);
-// watchPanel = new JPanel();
-// controlPanel = new JPanel();
-// df = new DecimalFormat("00");
-// display = new JLabel();
-// display.setText("Elapse : " + df.format(hour) + " : " + df.format(minute)
-// + " : " + df.format(second) + " : " + df.format(csecond));
-// dialog = new JOptionPane();
-// display.setFont(new Font("Arial", Font.BOLD, 24));
-// t = new Timer(10, this);
-// watchPanel.setLayout(new FlowLayout());
-// controlPanel.setLayout(new FlowLayout());
-// f.getContentPane().setLayout(new BorderLayout());
-// watchPanel.add(display);
-// controlPanel.add(ssBtn);// Start/Stop
-// controlPanel.add(prBtn);// Pause/Resume
-// controlPanel.add(reBtn);// Reset
-// controlPanel.add(about);
-// f.getContentPane().add(watchPanel, "North");
-// f.getContentPane().add(controlPanel, "Center");
-// prBtn.addActionListener(btnPerform);
-// ssBtn.addActionListener(btnPerform);
-// reBtn.addActionListener(btnPerform);
-// about.addActionListener(btnPerform);
-// f.setSize(500, 200);
-// f.setVisible(true);
-// f.setResizable(false);
-// f.setBackground(Color.BLUE);
-// f.setForeground(Color.BLACK);
-// f.setDefaultCloseOperation(f.EXIT_ON_CLOSE);
-// } catch (Exception npe) {
-// npe.printStackTrace();
-// }
-// }
-
-// void startTimer() {
-// t.start();
-// }
-
-// void stopTimer() {
-// t.stop();
-// csecond = 0;
-// second = 0;
-// minute = 0;
-// hour = 0;
-// }
-
-// void pauseTimer() {
-// t.stop();
-// }
-
-// void resumeTimer() {
-// t.start();
-// }
-
-// void resetTimer() {
-// csecond = 0;
-// second = 0;
-// minute = 0;
-// hour = 0;
-// display.setText("Elapse : " + df.format(hour) + " : " + df.format(minute)
-// + " : " + df.format(second) + " : " + df.format(csecond));
-// }
-
-// private int csecond = 0;
-// private int second = 0;
-// private int minute = 0;
-// private int hour = 0;
-// private boolean isPause = true;
-// private boolean isStart = true;
-
-// public void actionPerformed(ActionEvent e) {
-// csecond++;
-// if (csecond == 100) {
-// second++;
-// csecond = 0;
-// }
-// if (second == 60) {
-// minute++;
-// second = 0;
-// }
-// if (minute == 60) {
-// hour++;
-// minute = 0;
-// }
-
-// display.setText("Elapse : " + df.format(hour) + " : " + df.format(minute)
-// + " : " + df.format(second) + " : " + df.format(csecond));
-// }
-
-// private class ButtonPerformed implements ActionListener {
-// public void actionPerformed(ActionEvent e) {
-// if (e.getSource() == ssBtn) {
-// if (isStart) {
-// startTimer();
-// isStart = false;
-// ssBtn.setText("Stop");
-// prBtn.setEnabled(true);
-
-// } else {
-// isStart = true;
-// ssBtn.setText("Start");
-// stopTimer();
-// isPause = true;
-// prBtn.setText("Pause");
-// prBtn.setEnabled(false);
-// }
-// }
-// if (e.getSource() == prBtn) {
-// if (isPause) {
-// prBtn.setText("Resume");
-// pauseTimer();
-// isPause = false;
-// } else {
-// prBtn.setText("Pause");
-// startTimer();
-// isPause = true;
-// }
-// }
-// if (e.getSource() == reBtn) {
-// resetTimer();
-// }
-// if (e.getSource() == about) {
-// dialog.showMessageDialog(null, "StopWatch Demo.\nCreated by " +
-// "Uzair Hussain\nRoll NO : 21SW085 \nSec: 3");
-// }
-// }
-// }
-
-// }
 
 public class Stopwatch {
 
