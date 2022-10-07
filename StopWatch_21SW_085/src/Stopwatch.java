@@ -8,6 +8,7 @@ import java.lang.*;
 class Welcome extends JFrame {
 
     public Welcome() {
+        setTitle("Welcome to Stopwatch");
         ImageIcon ic = new ImageIcon("welcome.jpg");
         JPanel jp = new JPanel();
 
@@ -21,7 +22,7 @@ class Welcome extends JFrame {
         JProgressBar pb = new JProgressBar();
         pb.setStringPainted(true);
         pb.setMaximum(0);
-        pb.setMaximum(10);
+        pb.setMaximum(30);
         jp.add(pb, BorderLayout.SOUTH);
 
         add(jp);
@@ -41,7 +42,7 @@ class Welcome extends JFrame {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
             }
-            if (i == 10) {
+            if (i == 30) {
                 setVisible(false);
                 Intro intro = new Intro();
                 // call the class here which you want to show
@@ -121,7 +122,7 @@ class Intro extends JFrame implements ActionListener {
         if (e.getSource() == info) {
             try {
                 info i = new info();
-                this.dispose();
+                // this.dispose();
             } catch (Exception a) {
                 a.printStackTrace();
             } // when info button is selected
@@ -146,7 +147,7 @@ class info extends JFrame {
         setResizable(false);
 
         c = getContentPane();
-        getContentPane().setBackground(Color.BLUE);
+        getContentPane().setBackground(Color.DARK_GRAY);
         c.setLayout(null);
         title = new JLabel("📌 Project Details. ");
         title.setFont(new Font("Courier", Font.BOLD, 30));
