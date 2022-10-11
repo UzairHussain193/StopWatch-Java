@@ -22,7 +22,7 @@ class Welcome extends JFrame {
         JProgressBar pb = new JProgressBar();
         pb.setStringPainted(true);
         pb.setMaximum(0);
-        pb.setMaximum(30);
+        pb.setMaximum(20);
         jp.add(pb, BorderLayout.SOUTH);
 
         add(jp);
@@ -42,93 +42,13 @@ class Welcome extends JFrame {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
             }
-            if (i == 30) {
+            if (i == 20) {
                 setVisible(false);
-                Intro intro = new Intro();
+                NewJFrame n = new NewJFrame();
+                n.main();
                 // call the class here which you want to show
             }
         }
-    }
-}
-
-class Intro extends JFrame implements ActionListener {
-    Container c;
-    JButton stopwatch, info;
-
-    public Intro() {
-        ImageIcon ic = new ImageIcon("intro.jpg");
-        JLabel lb = new JLabel(ic);
-        // JPanel jp = new JPanel();
-        setTitle("Home Screen");
-        setBounds(300, 200, 500, 400);
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setLayout(new FlowLayout(FlowLayout.CENTER));
-
-        setResizable(false);
-        c = getContentPane();
-        c.setBackground(Color.BLACK);
-        c.setLayout(new BorderLayout());
-        c.setLayout(new FlowLayout(FlowLayout.CENTER));
-
-        JLabel title = new JLabel("👋 Home Screen 🙂");
-        title.setFont(new Font("Courier", Font.BOLD, 30));
-        title.setBounds(100, 30, 300, 30);
-        title.setBackground(Color.BLACK);
-        title.setForeground(Color.GREEN);
-        c.add(title);
-
-        c.add(lb);
-        // c.add(lb, BorderLayout.CENTER);
-
-        stopwatch = new JButton("STOPWATCH");
-        stopwatch.setSize(150, 50);
-        stopwatch.setLocation(100, 300);
-        stopwatch.setFont(new Font("Courier", Font.BOLD, 20));
-        stopwatch.setBackground(Color.YELLOW);
-        stopwatch.setForeground(Color.BLACK);
-        stopwatch.setVisible(true);
-        stopwatch.addActionListener(this);
-        c.add(stopwatch);
-
-        info = new JButton("INFO");
-        info.setSize(150, 50);
-        info.setFont(new Font("Courier", Font.BOLD, 20));
-        info.setLocation(270, 300);
-        info.setBackground(Color.RED);
-        info.setForeground(Color.WHITE);
-        info.setVisible(true);
-        c.add(info);
-
-        // add(jp);
-        c.setLayout(null);
-        // c.add(lb, null);
-
-        stopwatch.addActionListener(this);
-        info.addActionListener(this);
-
-        setVisible(true);
-
-    }
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
-
-        if (e.getSource() == stopwatch) { // when stopwatch button is selected
-            this.dispose();
-            NewJFrame nf = new NewJFrame();
-            nf.main();
-
-        }
-        if (e.getSource() == info) {
-            try {
-                info i = new info();
-                // this.dispose();
-            } catch (Exception a) {
-                a.printStackTrace();
-            } // when info button is selected
-
-        }
-
     }
 }
 
@@ -187,10 +107,9 @@ class info extends JFrame {
         setVisible(true);
 
     }
-
 }
 
-class NewJFrame extends javax.swing.JFrame implements Runnable {
+class NewJFrame extends JFrame implements Runnable {
 
     Thread t;
     int hcnt = 0, mcnt = 0, scnt = 0, mscnt = 0;
@@ -257,7 +176,7 @@ class NewJFrame extends javax.swing.JFrame implements Runnable {
         try {
             while (true) {
                 mscnt++;
-                if (mscnt > 999) {
+                if (mscnt > 499) {
                     mscnt = 0;
                     scnt++;
                 }
@@ -294,112 +213,112 @@ class NewJFrame extends javax.swing.JFrame implements Runnable {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">
     private void initComponents() {
         ImageIcon img = new ImageIcon("stp.png");
-        jPanel1 = new javax.swing.JPanel();
-        lbdisplay1 = new javax.swing.JLabel();
-        lbdisplay2 = new javax.swing.JLabel();
-        btnstart = new javax.swing.JButton();
-        btnreset = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        textlist = new javax.swing.JTextArea();
+        jPanel1 = new JPanel();
+        lbdisplay1 = new JLabel();
+        lbdisplay2 = new JLabel();
+        btnstart = new JButton();
+        btnreset = new JButton();
+        jScrollPane1 = new JScrollPane();
+        textlist = new JTextArea();
 
         setLocation(300, 200);
         setIconImage(img.getImage());
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Stopwatch");
         setResizable(false);
 
-        jPanel1.setBackground(new java.awt.Color(102, 255, 102));
+        jPanel1.setBackground(new Color(102, 255, 102));
 
-        lbdisplay1.setFont(new java.awt.Font("Segoe UI", 1, 70)); // NOI18N
+        lbdisplay1.setFont(new Font("Segoe UI", 1, 70)); // NOI18N
         lbdisplay1.setText("00:00:00");
 
-        lbdisplay2.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
+        lbdisplay2.setFont(new Font("Segoe UI", 1, 48)); // NOI18N
         lbdisplay2.setText("000");
 
         btnstart.setBackground(Color.YELLOW);
-        btnstart.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        btnstart.setFont(new Font("Segoe UI", 1, 36)); // NOI18N
         btnstart.setText("Start");
-        btnstart.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnstart.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
                 btnstartActionPerformed(evt);
             }
         });
 
-        btnreset.setBackground(new java.awt.Color(0, 0, 255));
-        btnreset.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        btnreset.setBackground(new Color(0, 0, 255));
+        btnreset.setFont(new Font("Segoe UI", 1, 36)); // NOI18N
         btnreset.setText("Reset");
-        btnreset.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnreset.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
                 btnresetActionPerformed(evt);
             }
         });
 
-        textlist.setBackground(new java.awt.Color(153, 153, 0));
+        textlist.setBackground(new Color(153, 153, 0));
         textlist.setColumns(20);
         textlist.setLineWrap(true);
         textlist.setRows(5);
         jScrollPane1.setViewportView(textlist);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        GroupLayout jPanel1Layout = new GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
-                jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(14, 14, 14)
                                 .addGroup(jPanel1Layout
-                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .createParallelGroup(GroupLayout.Alignment.LEADING, false)
                                         .addComponent(jScrollPane1)
                                         .addGroup(jPanel1Layout.createSequentialGroup()
                                                 .addGap(9, 9, 9)
-                                                .addComponent(btnstart, javax.swing.GroupLayout.PREFERRED_SIZE, 173,
-                                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(btnstart, GroupLayout.PREFERRED_SIZE, 173,
+                                                        GroupLayout.PREFERRED_SIZE)
                                                 .addGap(18, 18, 18)
-                                                .addComponent(btnreset, javax.swing.GroupLayout.PREFERRED_SIZE, 174,
-                                                        javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addComponent(btnreset, GroupLayout.PREFERRED_SIZE, 174,
+                                                        GroupLayout.PREFERRED_SIZE))
                                         .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addComponent(lbdisplay1, javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                .addComponent(lbdisplay1, GroupLayout.PREFERRED_SIZE,
                                                         295,
-                                                        javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                        GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                                                 .addComponent(lbdisplay2)))
                                 .addContainerGap(15, Short.MAX_VALUE)));
         jPanel1Layout.setVerticalGroup(
-                jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(26, 26, 26)
                                 .addGroup(jPanel1Layout
-                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(lbdisplay1, javax.swing.GroupLayout.PREFERRED_SIZE, 70,
-                                                javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                        .addComponent(lbdisplay1, GroupLayout.PREFERRED_SIZE, 70,
+                                                GroupLayout.PREFERRED_SIZE)
                                         .addComponent(lbdisplay2))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(jPanel1Layout
-                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(btnstart, javax.swing.GroupLayout.PREFERRED_SIZE, 52,
-                                                javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(btnreset, javax.swing.GroupLayout.PREFERRED_SIZE, 52,
-                                                javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 217,
+                                        .createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                        .addComponent(btnstart, GroupLayout.PREFERRED_SIZE, 52,
+                                                GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(btnreset, GroupLayout.PREFERRED_SIZE, 52,
+                                                GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jScrollPane1, GroupLayout.DEFAULT_SIZE, 217,
                                         Short.MAX_VALUE)
                                 .addContainerGap()));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        GroupLayout layout = new GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE,
-                                javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE));
+                layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                        .addComponent(jPanel1, GroupLayout.PREFERRED_SIZE,
+                                GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE));
         layout.setVerticalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE,
-                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE));
+                layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                        .addComponent(jPanel1, GroupLayout.DEFAULT_SIZE,
+                                GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE));
 
         pack();
         setLocationRelativeTo(null);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
     }// </editor-fold>
 
-    private void btnstartActionPerformed(java.awt.event.ActionEvent evt) {
+    private void btnstartActionPerformed(ActionEvent evt) {
 
         if (btnstart.getText().equals("Start")) {
             btnstart.setText("Stop");
@@ -432,9 +351,9 @@ class NewJFrame extends javax.swing.JFrame implements Runnable {
     public void main() {
 
         try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+            for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
             }
@@ -447,7 +366,7 @@ class NewJFrame extends javax.swing.JFrame implements Runnable {
         } catch (IllegalAccessException ex) {
             java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null,
                     ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null,
                     ex);
         }
@@ -462,13 +381,13 @@ class NewJFrame extends javax.swing.JFrame implements Runnable {
     }
 
     // Variables declaration - do not modify
-    private javax.swing.JButton btnreset;
-    private javax.swing.JButton btnstart;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel lbdisplay1;
-    private javax.swing.JLabel lbdisplay2;
-    private javax.swing.JTextArea textlist;
+    private JButton btnreset;
+    private JButton btnstart;
+    private JPanel jPanel1;
+    private JScrollPane jScrollPane1;
+    private JLabel lbdisplay1;
+    private JLabel lbdisplay2;
+    private JTextArea textlist;
     // End of variables declaration
 }
 
