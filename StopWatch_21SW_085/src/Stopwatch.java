@@ -44,17 +44,17 @@ class Welcome extends JFrame {
             }
             if (i == 20) {
                 setVisible(false);
-                NewJFrame n = new NewJFrame();
-                n.main();
+                info in = new info();
                 // call the class here which you want to show
             }
         }
     }
 }
 
-class info extends JFrame {
+class info extends JFrame implements ActionListener {
     Container c;
     JLabel title, name, roll, subj, teacher;
+    JButton start;
 
     public info() {
 
@@ -103,9 +103,26 @@ class info extends JFrame {
         teacher.setLocation(50, 250);
         c.add(teacher);
 
+        start = new JButton("START");
+        start.setFont(new Font(Font.SERIF, Font.BOLD, 25));
+        start.setBackground(Color.YELLOW);
+        start.setForeground(Color.BLACK);
+        start.setSize(200, 50);
+        start.setLocation(100, 300);
+        start.addActionListener(this);
+        c.add(start);
+
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setVisible(true);
+    }
 
+    @Override
+    public void actionPerformed(ActionEvent evt) {
+        if (evt.getSource() == start) {
+            this.dispose();
+            NewJFrame n = new NewJFrame();
+            n.main();
+        }
     }
 }
 
@@ -224,6 +241,7 @@ class NewJFrame extends JFrame implements Runnable {
         setLocation(300, 200);
         setIconImage(img.getImage());
         setTitle("Stopwatch");
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
         setResizable(false);
 
         jPanel1.setBackground(new Color(102, 255, 102));
@@ -315,7 +333,7 @@ class NewJFrame extends JFrame implements Runnable {
 
         pack();
         setLocationRelativeTo(null);
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
+
     }// </editor-fold>
 
     private void btnstartActionPerformed(ActionEvent evt) {
@@ -392,7 +410,6 @@ class NewJFrame extends JFrame implements Runnable {
 }
 
 public class Stopwatch {
-
     public static void main(String[] args) {
         Welcome w = new Welcome();
         // Intro in = new Intro();
