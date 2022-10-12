@@ -21,18 +21,17 @@ class Welcome extends JFrame {
 
         JProgressBar pb = new JProgressBar();
         pb.setStringPainted(true);
+        pb.setForeground(Color.BLACK);
         pb.setMaximum(0);
-        pb.setMaximum(20);
+        pb.setMaximum(10);
         jp.add(pb, BorderLayout.SOUTH);
 
         add(jp);
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setContentPane(jp);
-        // setLocation(200, 300);
         setVisible(true);
         setBounds(300, 200, 500, 400);
-        // setSize(500, 400);
 
         for (int i = 0; i <= 100; i++) {
             pb.setValue(i);
@@ -42,8 +41,8 @@ class Welcome extends JFrame {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
             }
-            if (i == 20) {
-                setVisible(false);
+            if (i == 10) {
+                this.dispose();
                 info in = new info();
                 // call the class here which you want to show
             }
@@ -103,12 +102,12 @@ class info extends JFrame implements ActionListener {
         teacher.setLocation(50, 250);
         c.add(teacher);
 
-        start = new JButton("START");
+        start = new JButton("NEXT");
         start.setFont(new Font(Font.SERIF, Font.BOLD, 25));
         start.setBackground(Color.YELLOW);
         start.setForeground(Color.BLACK);
-        start.setSize(200, 50);
-        start.setLocation(100, 300);
+        start.setSize(150, 50);
+        start.setLocation(200, 300);
         start.addActionListener(this);
         c.add(start);
 
@@ -193,7 +192,7 @@ class NewJFrame extends JFrame implements Runnable {
         try {
             while (true) {
                 mscnt++;
-                if (mscnt > 499) {
+                if (mscnt > 999) {
                     mscnt = 0;
                     scnt++;
                 }
@@ -399,13 +398,13 @@ class NewJFrame extends JFrame implements Runnable {
     }
 
     // Variables declaration - do not modify
-    private JButton btnreset;
-    private JButton btnstart;
-    private JPanel jPanel1;
-    private JScrollPane jScrollPane1;
-    private JLabel lbdisplay1;
-    private JLabel lbdisplay2;
-    private JTextArea textlist;
+    JButton btnreset;
+    JButton btnstart;
+    JPanel jPanel1;
+    JScrollPane jScrollPane1;
+    JLabel lbdisplay1;
+    JLabel lbdisplay2;
+    JTextArea textlist;
     // End of variables declaration
 }
 
