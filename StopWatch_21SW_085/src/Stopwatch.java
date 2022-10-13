@@ -192,7 +192,7 @@ class NewJFrame extends JFrame implements Runnable {
         try {
             while (true) {
                 mscnt++;
-                if (mscnt > 999) {
+                if (mscnt > 499) {
                     mscnt = 0;
                     scnt++;
                 }
@@ -230,12 +230,12 @@ class NewJFrame extends JFrame implements Runnable {
     private void initComponents() {
         ImageIcon img = new ImageIcon("stp.png");
         jPanel1 = new JPanel();
-        lbdisplay1 = new JLabel();
-        lbdisplay2 = new JLabel();
-        btnstart = new JButton();
-        btnreset = new JButton();
-        jScrollPane1 = new JScrollPane();
-        textlist = new JTextArea();
+        lbdisplay1 = new JLabel(); /// for stop watch
+        lbdisplay2 = new JLabel(); /// for mili second
+        btnstart = new JButton(); /// start button
+        btnreset = new JButton(); /// reset button
+        jScrollPane1 = new JScrollPane(); /// scroll pane
+        textlist = new JTextArea(); //// lapse display
 
         setLocation(300, 200);
         setIconImage(img.getImage());
