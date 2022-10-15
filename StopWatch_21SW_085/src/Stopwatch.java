@@ -228,114 +228,123 @@ class NewJFrame extends JFrame implements Runnable {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">
     private void initComponents() {
-        ImageIcon img = new ImageIcon("stp.png");
-        jPanel1 = new JPanel();
-        lbdisplay1 = new JLabel(); /// for stop watch
-        lbdisplay2 = new JLabel(); /// for mili second
-        btnstart = new JButton(); /// start button
-        btnreset = new JButton(); /// reset button
-        jScrollPane1 = new JScrollPane(); /// scroll pane
-        textlist = new JTextArea(); //// lapse display
 
-        setLocation(300, 200);
-        setIconImage(img.getImage());
+        jPanel1 = new javax.swing.JPanel();
+        lbdisplay1 = new javax.swing.JLabel();
+        lbdisplay2 = new javax.swing.JLabel();
+        btnstart = new javax.swing.JButton();
+        btnreset = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        textlist = new javax.swing.JTextArea();
+        btnlapse = new javax.swing.JButton();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Stopwatch");
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
         setResizable(false);
 
-        jPanel1.setBackground(new Color(102, 255, 102));
+        jPanel1.setBackground(new java.awt.Color(102, 255, 102));
 
-        lbdisplay1.setFont(new Font("Segoe UI", 1, 70)); // NOI18N
+        lbdisplay1.setFont(new java.awt.Font("Segoe UI", 1, 70)); // NOI18N
         lbdisplay1.setText("00:00:00");
 
-        lbdisplay2.setFont(new Font("Segoe UI", 1, 48)); // NOI18N
+        lbdisplay2.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
         lbdisplay2.setText("000");
 
-        btnstart.setBackground(Color.YELLOW);
-        btnstart.setFont(new Font("Segoe UI", 1, 36)); // NOI18N
+        btnstart.setBackground(new java.awt.Color(255, 255, 0));
+        btnstart.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         btnstart.setText("Start");
-        btnstart.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent evt) {
-                btnstartActionPerformed(evt);
+        btnstart.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent e) {
+                btnstartActionPerformed(e);
             }
         });
 
-        btnreset.setBackground(new Color(0, 0, 255));
-        btnreset.setFont(new Font("Segoe UI", 1, 36)); // NOI18N
+        btnreset.setBackground(new java.awt.Color(102, 102, 255));
+        btnreset.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         btnreset.setText("Reset");
-        btnreset.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent evt) {
-                btnresetActionPerformed(evt);
+        btnreset.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent ev) {
+                btnresetActionPerformed(ev);
             }
         });
 
-        textlist.setBackground(new Color(153, 153, 0));
+        textlist.setBackground(new java.awt.Color(153, 153, 0));
         textlist.setColumns(20);
         textlist.setLineWrap(true);
         textlist.setRows(5);
         jScrollPane1.setViewportView(textlist);
 
-        GroupLayout jPanel1Layout = new GroupLayout(jPanel1);
+        btnlapse.setBackground(new java.awt.Color(255, 153, 153));
+        btnlapse.setFont(new java.awt.Font("Segoe UI", 1, 32)); // NOI18N
+        btnlapse.setText("Lapse");
+        btnlapse.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnlapseActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
-                jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(14, 14, 14)
                                 .addGroup(jPanel1Layout
-                                        .createParallelGroup(GroupLayout.Alignment.LEADING, false)
+                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                         .addComponent(jScrollPane1)
                                         .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addGap(9, 9, 9)
-                                                .addComponent(btnstart, GroupLayout.PREFERRED_SIZE, 173,
-                                                        GroupLayout.PREFERRED_SIZE)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(btnreset, GroupLayout.PREFERRED_SIZE, 174,
-                                                        GroupLayout.PREFERRED_SIZE))
+                                                .addComponent(btnstart, javax.swing.GroupLayout.PREFERRED_SIZE, 126,
+                                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(btnlapse, javax.swing.GroupLayout.PREFERRED_SIZE, 114,
+                                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(btnreset, javax.swing.GroupLayout.PREFERRED_SIZE, 130,
+                                                        javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addComponent(lbdisplay1, GroupLayout.PREFERRED_SIZE,
-                                                        295,
-                                                        GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(lbdisplay1, javax.swing.GroupLayout.PREFERRED_SIZE, 295,
+                                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                 .addComponent(lbdisplay2)))
                                 .addContainerGap(15, Short.MAX_VALUE)));
         jPanel1Layout.setVerticalGroup(
-                jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(26, 26, 26)
-                                .addGroup(jPanel1Layout
-                                        .createParallelGroup(GroupLayout.Alignment.BASELINE)
-                                        .addComponent(lbdisplay1, GroupLayout.PREFERRED_SIZE, 70,
-                                                GroupLayout.PREFERRED_SIZE)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(lbdisplay1, javax.swing.GroupLayout.PREFERRED_SIZE, 70,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(lbdisplay2))
-                                .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(jPanel1Layout
-                                        .createParallelGroup(GroupLayout.Alignment.BASELINE)
-                                        .addComponent(btnstart, GroupLayout.PREFERRED_SIZE, 52,
-                                                GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(btnreset, GroupLayout.PREFERRED_SIZE, 52,
-                                                GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jScrollPane1, GroupLayout.DEFAULT_SIZE, 217,
-                                        Short.MAX_VALUE)
+                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(btnstart, javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(btnlapse, javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(btnreset, javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED,
+                                        javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 214, Short.MAX_VALUE)
                                 .addContainerGap()));
 
-        GroupLayout layout = new GroupLayout(getContentPane());
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-                layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                        .addComponent(jPanel1, GroupLayout.PREFERRED_SIZE,
-                                GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE));
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE,
+                                javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE));
         layout.setVerticalGroup(
-                layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                        .addComponent(jPanel1, GroupLayout.DEFAULT_SIZE,
-                                GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE));
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE,
+                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE));
 
         pack();
         setLocationRelativeTo(null);
-
     }// </editor-fold>
 
-    private void btnstartActionPerformed(ActionEvent evt) {
+    private void btnstartActionPerformed(ActionEvent e) {
 
         if (btnstart.getText().equals("Start")) {
             btnstart.setText("Stop");
@@ -350,16 +359,25 @@ class NewJFrame extends JFrame implements Runnable {
             btnstart.setText("Start");
             btnstart.setBackground(Color.YELLOW);
             t.suspend();
-            printToList();
+            // printToList();
         }
     }
 
-    private void btnresetActionPerformed(java.awt.event.ActionEvent evt) {
+    private void btnresetActionPerformed(java.awt.event.ActionEvent ev) {
 
         reset();
         t.suspend();
         btnstart.setText("Start");
         textlist.setText("");
+    }
+
+    private void btnlapseActionPerformed(java.awt.event.ActionEvent evt) {
+        // TODO add your handling code here:
+        if (btnlapse.getText().equals("Lapse")) {
+            // t.suspend();
+            // t.resume();
+            printToList();
+        }
     }
 
     /**
@@ -400,6 +418,7 @@ class NewJFrame extends JFrame implements Runnable {
     // Variables declaration - do not modify
     JButton btnreset;
     JButton btnstart;
+    JButton btnlapse;
     JPanel jPanel1;
     JScrollPane jScrollPane1;
     JLabel lbdisplay1;
