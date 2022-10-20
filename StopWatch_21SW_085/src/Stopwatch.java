@@ -44,7 +44,9 @@ class Welcome extends JFrame {
             }
             if (i == 10) {
                 this.dispose();
-                info in = new info();
+                // info in = new info();
+                NewJFrame n1 = new NewJFrame();
+                n1.main();
                 // call the class here which you want to show
             }
         }
@@ -129,7 +131,7 @@ class info extends JFrame implements ActionListener {
 class NewJFrame extends JFrame implements Runnable {
 
     Thread t;
-    int hcnt = 0, mcnt = 0, scnt = 0, mscnt = 0;
+    int hours = 0, minutes = 0, seconds = 0, milliseconds = 0;
     String str = "", nstr = "", mstr = "", dstr = "";
     int cnt = 0, cnt2 = 0;
 
@@ -155,10 +157,10 @@ class NewJFrame extends JFrame implements Runnable {
     }
 
     public void reset() {
-        hcnt = 0;
-        mcnt = 0;
-        scnt = 0;
-        mscnt = 0;
+        hours = 0;
+        minutes = 0;
+        seconds = 0;
+        milliseconds = 0;
         nstr = "00:00:00";
         mstr = "000";
         dstr = "";
@@ -173,53 +175,54 @@ class NewJFrame extends JFrame implements Runnable {
 
     public void setTimeCounter() {
         nstr = "";
-        if (hcnt < 10) {
-            nstr = "0" + hcnt;
+        if (hours < 10) {
+            nstr = "0" + hours;
         } else {
-            nstr = "" + hcnt;
+            nstr = "" + hours;
         }
-        if (mcnt < 10) {
-            nstr += ":0" + mcnt;
+        if (minutes < 10) {
+            nstr += ":0" + minutes;
         } else {
-            nstr += ":" + mcnt;
+            nstr += ":" + minutes;
         }
-        if (scnt < 10) {
-            nstr += ":0" + scnt;
+        if (seconds < 10) {
+            nstr += ":0" + seconds;
         } else {
-            nstr += ":" + scnt;
+            nstr += ":" + seconds;
         }
     }
 
     public void setMTimeCounter() {
         mstr = "";
-        if (mscnt < 10) {
-            mstr = "00" + mscnt;
-        } else if (mscnt >= 10 && mscnt < 100) {
-            mstr = "0" + mscnt;
+        if (milliseconds < 10) {
+            mstr = "00" + milliseconds;
+        } else if (milliseconds > 9 && milliseconds < 100) {
+            mstr = "0" + milliseconds;
         } else {
-            mstr = "" + mscnt;
+            mstr = "" + milliseconds;
         }
     }
 
     public void run() {
         try {
             while (true) {
-                mscnt++;
-                if (mscnt > 499) {
-                    mscnt = 0;
-                    scnt++;
+                milliseconds += 2;
+                if (milliseconds > 999) {
+                    Thread.sleep(2);
+                    seconds++;
+                    milliseconds = 0;
                 }
-                if (scnt > 56) {
-                    scnt = 0;
-                    mscnt++;
+                if (seconds > 59) {
+                    minutes++;
+                    seconds = 0;
                 }
-                if (mcnt > 59) {
-                    mcnt = 0;
-                    hcnt++;
+                if (minutes > 59) {
+                    hours++;
+                    minutes = 0;
                 }
-                if (hcnt > 99) {
-                    mcnt = 0;
-                    hcnt++;
+                if (hours > 99) {
+                    hours++;
+                    minutes = 0;
                 }
 
                 setTimeCounter();
@@ -227,7 +230,9 @@ class NewJFrame extends JFrame implements Runnable {
                 display();
                 Thread.sleep(1);
             }
-        } catch (Exception e) {
+        } catch (
+
+        Exception e) {
             e.printStackTrace();
         }
     }
